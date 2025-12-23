@@ -1,0 +1,436 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Snowfall effect */
+.snowflakes {
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: #fff;
+  font-size: 1em;
+  opacity: 0.8;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Floating particles */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: float 20s infinite linear;
+}
+
+/* Card enhancements */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 50px 40px;
+  border-radius: 24px;
+  max-width: 500px;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: cardEntrance 1s ease-out;
+  transition: transform 0.5s ease;
+}
+
+.card.expanded {
+  max-width: 700px;
+  transform: scale(1.05);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+h1 {
+  color: #ffdd59;
+  margin-bottom: 15px;
+  font-size: 2.5em;
+  text-shadow: 0 0 20px rgba(255, 221, 89, 0.5);
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 221, 89, 0.5);
+  }
+  to {
+    text-shadow: 
+      0 0 20px rgba(255, 221, 89, 0.8),
+      0 0 30px rgba(255, 221, 89, 0.6);
+  }
+}
+
+h2 {
+  color: #ff9ff3;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  animation: colorShift 4s infinite alternate;
+}
+
+@keyframes colorShift {
+  0% {
+    color: #ff9ff3;
+  }
+  100% {
+    color: #ffcccc;
+  }
+}
+
+p {
+  line-height: 1.7;
+  font-size: 17px;
+  margin-bottom: 10px;
+  animation: textReveal 1.5s ease-out;
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  margin-top: 30px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff4757, #ff6b81);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 5px 15px rgba(255, 71, 87, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 25px rgba(255, 71, 87, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Photo container styling */
+.photo-container {
+  margin-top: 30px;
+  animation: photoReveal 1s ease-out;
+}
+
+@keyframes photoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+
+
+@keyframes borderGlow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.special-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease;
+}
+
+.special-photo:hover {
+  transform: scale(1.02);
+}
+
+.photo-caption {
+  margin-top: 15px;
+  color: #ffdd59;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 221, 89, 0.3);
+  animation: captionPulse 2s infinite alternate;
+}
+
+@keyframes captionPulse {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.surprise-text {
+  margin-top: 20px;
+  color: #7bed9f;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 15px;
+  background: rgba(123, 237, 159, 0.1);
+  border-radius: 15px;
+  border-left: 4px solid #7bed9f;
+  animation: 
+    fadeInUp 1s ease-out,
+    pulse 2s infinite;
+  text-shadow: 0 0 10px rgba(123, 237, 159, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(123, 237, 159, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(123, 237, 159, 0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Decorative elements */
+.decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.decoration {
+  position: absolute;
+  font-size: 24px;
+  animation: floatDecoration 15s infinite linear;
+}
+
+@keyframes floatDecoration {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+  }
+}
+
+/* Hearts animation */
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  color: #ff4757;
+  font-size: 20px;
+  animation: heartFloat 8s infinite linear;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  
+  .card.expanded {
+    max-width: 90%;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  .photo-frame {
+    max-width: 300px;
+    padding: 15px;
+  }
+}
